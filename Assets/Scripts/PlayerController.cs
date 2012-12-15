@@ -36,17 +36,6 @@ public class PlayerController : MonoBehaviour {
 		
 		Vector3 translation = new Vector3(horizontal * moveSpeed * Time.deltaTime, 0, 0);
 		
-		//RaycastHit hitInfo;
-		//if(Physics.Raycast(transform.position + new Vector3(0, 0.1f, 0), Vector3.down, out hitInfo, 0.2f)) {
-			//jumping = false;
-		//}
-				
-		//if(!jumping && (vertical > 0.5)) {
-		//	Debug.Log (vertical);
-		//	rigidbody.AddForce(Vector3.up * jumpForce * 100 * Time.deltaTime);
-		//	jumping = true;
-		//}
-		
 		if(characterController.isGrounded && (vertical > 0.5)) {
 			currentJumpForce = jumpForce;
 			jumpTime = Time.time;
@@ -59,14 +48,15 @@ public class PlayerController : MonoBehaviour {
 		
 		currentJumpForce = Mathf.Lerp(jumpForce, 0, Time.time - jumpTime);
 		
-		//rigidbody.transform.Translate(translation);
 		characterController.Move(translation);
 		
-		//Debug.Log(Input.GetAxis("RightAnalog Horizontal"));
-		//Debug.Log(Input.GetAxis("RightAnalog Vertical"));
+		if(Input.GetMouseButton(0)){
+			Fire(Quaternion.FromToRotation(Vector3.up, Input.mousePosition - Camera.main.WorldToScreenPoint(bulletOrigin.position)));
+		}
+		
 		Vector3 rightAnalog = new Vector3(Input.GetAxis("RightAnalog Horizontal"), Input.GetAxis("RightAnalog Vertical"), 0);
 		if(rightAnalog.magnitude > 0.1) {
-			Fire(Quaternion.FromToRotation(new Vector3(0, 1, 0), rightAnalog));
+			Fire(Quaternion.FromToRotation(Vector3.up, rightAnalog));
 		}
 	}
 	
