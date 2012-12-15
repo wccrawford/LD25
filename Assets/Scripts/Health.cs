@@ -5,8 +5,10 @@ public class Health : MonoBehaviour {
 	public int maxHealth = 20;
 	public GameObject healthbarPrefab;
 	
-	private GameObject healthbar;
-	private GameObject guipanel;
+	protected GameObject healthbar;
+	protected GameObject guipanel;
+	
+	protected UIFilledSprite filledSprite;
 	
 	protected int health;
 	// Use this for initialization
@@ -16,6 +18,8 @@ public class Health : MonoBehaviour {
 		healthbar = (GameObject)Instantiate(healthbarPrefab, Vector3.zero, Quaternion.identity);
 		healthbar.transform.parent = guipanel.transform;
 		healthbar.transform.localScale = new Vector3(1, 1, 1);
+		
+		filledSprite = (UIFilledSprite) healthbar.GetComponentInChildren<UIFilledSprite>();
 	}
 	
 	// Update is called once per frame
@@ -32,10 +36,14 @@ public class Health : MonoBehaviour {
 			(healthbarLocation.x) - (Screen.width / 2),
 			(healthbarLocation.y) - (Screen.height / 2),
 			0) / 225;
-		Debug.Log (healthbarLocation);
 	}
 	
 	public void TakeDamage(int damage) {
 		health -= damage;
+		if(health > 0) {
+			filledSprite.fillAmount = (float)health / maxHealth;
+		} else {
+			healthbar.SetActive(false);
+		}
 	}
 }
