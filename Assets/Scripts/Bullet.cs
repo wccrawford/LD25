@@ -6,6 +6,7 @@ using System.Collections;
 public class Bullet : MonoBehaviour {
 	public float speed = 0.5f;
 	public float lifeTime = 5;
+	public int damage = 5;
 	
 	protected float deathTime;
 	
@@ -27,6 +28,7 @@ public class Bullet : MonoBehaviour {
 	}
 	
 	void OnCollisionEnter(Collision collision) {
+		collision.gameObject.SendMessage("TakeDamage", damage, SendMessageOptions.DontRequireReceiver);
 		die = true;
 	}
 }

@@ -1,6 +1,16 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Bullet.cs">
+    <Files>
+      <File FileName="Assets\Scripts\Bullet.cs" Line="31" Column="38" />
+      <File FileName="Assets\Scripts\PlayerController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\EnemyController.cs" Line="21" Column="43" />
+      <File FileName="Assets\Scripts\Shoot.cs" Line="22" Column="25" />
+      <File FileName="Assets\Scripts\Health.cs" Line="20" Column="9" />
+      <File FileName="Assets\Scripts\EnemyDie.cs" Line="4" Column="19" />
+      <File FileName="Assets\Scripts\PlayerDie.cs" Line="17" Column="34" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
