@@ -39,11 +39,19 @@ public class Health : MonoBehaviour {
 	}
 	
 	public void TakeDamage(int damage) {
-		health -= damage;
+		health = Mathf.Clamp(health - damage, 0, maxHealth);
 		if(health > 0) {
 			filledSprite.fillAmount = (float)health / maxHealth;
 		} else {
 			healthbar.SetActive(false);
 		}
+	}
+	
+	public void AddHealth(int healthIncrease) {
+		if((health <= 0) && (healthIncrease > 0)) {
+			healthbar.SetActive(true);
+		}
+		health = Mathf.Clamp(health + healthIncrease, 0, maxHealth);
+		filledSprite.fillAmount = (float)health / maxHealth;
 	}
 }
