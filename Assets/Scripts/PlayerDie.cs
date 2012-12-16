@@ -15,5 +15,6 @@ public class PlayerDie : MonoBehaviour {
 	
 	public void Die() {
 		GameObject.Destroy(gameObject);
+		Application.LoadLevel("Death");
 	}
 }

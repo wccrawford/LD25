@@ -1,11 +1,14 @@
 using UnityEngine;
 using System.Collections;
 
+[RequireComponent (typeof(AudioSource))]
+
 public class Shoot : MonoBehaviour {
 	public float fireDelay = 0.5f;
 	public GameObject bulletPrefab;
 	public Transform bulletOrigin;
 	public Collider bodyCollider;
+	public AudioClip bulletSound;
 
 	protected float nextFire = 0;
 
@@ -27,6 +30,9 @@ public class Shoot : MonoBehaviour {
 			foreach(Collider bulletCollider in bullet.GetComponentsInChildren<Collider>()) {
 				Physics.IgnoreCollision(bulletCollider, bodyCollider);
 			}
+			
+			AudioSource audio = GetComponent<AudioSource>();
+			audio.PlayOneShot(bulletSound);
 		}
 	}
 }

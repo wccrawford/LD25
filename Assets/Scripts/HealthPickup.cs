@@ -14,7 +14,6 @@ public class HealthPickup : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter(Collider other) {
-		Debug.Log(other.gameObject.name);
 		if(other.gameObject.name == "Player") {
 			Health health = (Health)other.gameObject.GetComponent<Health>();
 			health.AddHealth(20);
